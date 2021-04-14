@@ -15,9 +15,9 @@ document.addEventListener('DOMContentLoaded', async function() {
   
   // Parse the attributes of "ride" object and store each data element individually
 
-  let firstName = ride.passengerDetails.first
-  let lastName = ride.passengerDetails.last
-  let phoneNumber = ride.passengerDetails.phoneNumber
+  let passengerFirstName = ride.passengerDetails.first
+  let passengerLastName = ride.passengerDetails.last
+  let passengerPhoneNumber = ride.passengerDetails.phoneNumber
   let pickupAddress = ride.pickupLocation.address
   let pickupCity = ride.pickupLocation.city
   let pickupState = ride.pickupLocation.state
@@ -32,23 +32,25 @@ document.addEventListener('DOMContentLoaded', async function() {
   // Define variable for ride type
   let rideType
 
-  // If purple ride has been requested than set it to Purple
-  if (purpleRequest == true){
-    rideType = `Purple`
-  }
+  // Define logic for determining ride type
+  
+    // If purple ride has been requested than set it to Purple
+    if (purpleRequest == true){
+      rideType = `Purple`
+    }
 
-  // If a purple ride is not requested but there are more than 3 passengers on a requested ride then type should be "XL" 
-  else if (numberOfRiders > 3) {
-    rideType = `XL`
-  }
+    // If a purple ride is not requested but there are more than 3 passengers on a requested ride then set it to "XL" 
+    else if (numberOfRiders > 3) {
+      rideType = `XL`
+    }
 
-  // If neither purple ride is requested nor more than 3 passengers, then ride type should be "X" 
-  else {
-    rideType = `X`
-  }
+    // If neither purple ride is requested nor more than 3 passengers, then set it to "X" 
+    else {
+      rideType = `X`
+    }
 
   // Create human-readable description of the ride
-  let output = `Noober ${rideType} Passenger: ${firstName} ${lastName} - ${phoneNumber}. Pickup at ${pickupAddress}, ${pickupCity}, ${pickupState} ${pickupZip}. Drop-off at ${dropoffAddress}, ${dropoffCity}, ${dropoffState} ${dropoffZip}.`
+  let output = `Noober ${rideType} Passenger: ${passengerFirstName} ${passengerLastName} - ${passengerPhoneNumber}. Pickup at ${pickupAddress}, ${pickupCity}, ${pickupState} ${pickupZip}. Drop-off at ${dropoffAddress}, ${dropoffCity}, ${dropoffState} ${dropoffZip}.`
 
   // Display human-readable description of the ride on the console
   console.log(output)
